@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Страница сказок
+{% endblock %}
+
+{% block content %}
+    <div class="big std st-bl">
+        <div class="hdr">
+        <h1>Категории</h1></div>
+        <div class="cnt"><div class="allcats"><div class="cat">
+            <div class="cat"><a href="{% url 'story' %}">Волшебные сказки<div class="clear"></div></a></div>
+            <div class="cat child"><a href="{% url 'story_2' %}" class="main">Сказки о животных<div class="clear"></div></a></div>
+        </div></div></div>
+{% endblock %}
+

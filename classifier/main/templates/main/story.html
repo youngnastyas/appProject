@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Волшебные сказки
+{% endblock %}
+
+{% block content %}
+    <h1>Волшебные сказки</h1>
+    {% if tasks %}
+        {% for el in tasks %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p><b>{{ el.author }}</b></p>
+                <p><b>{{ el.classif }}</b></p>
+                <p>{{ el.story }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Нет сказок</p>
+    {% endif %}
+{% endblock %}

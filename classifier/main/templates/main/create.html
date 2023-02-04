@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Добавить новую сказку
+{% endblock %}
+
+{% block content %}
+    <h1>Добавить сказку</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.author }}<br>
+        {{ form.classif }}<br>
+        {{ form.story }}<br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

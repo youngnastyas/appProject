@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+ <h1>Главная страница</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="dropdown-content">
+     <form action="PageObjects" method="post">
+           <tr><th><label for="id_filter_by">Фильтровать по категориям:  </label></th><td><select id="id_filter_by" name="filter_by" required>
+           <!--<select name="filter_by">-->
+        {% for temp in choices %}
+         <option value="{{ temp.tagId }} ">{{ temp.tagName }}</option>
+    {% endfor %}
+</select>
+            <input type="submit" value="показать">
+</form>
+       <li><a href="{% url 'showAll' %}">Показать все</a></li>
+    <div class="invalid-feedback">
+                Пожалуйста введите существующее значение.
+              </div>
+</ul>
+ </div>
+    <label class="form-label">Отфильтроано {{count}} </label>
+
+        {% if tasks %}
+            {% for el in tasks %}
+                <div class="alert alert-warning mt-2">
+                    <h3>{{ el.title }}</h3>
+                    <p><b>{{ el.classif }}</b></p>
+                    <p>{{ el.story }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет сказок</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
